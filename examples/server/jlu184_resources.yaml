@@ -1,0 +1,18 @@
+# dpdispatcher resources 配置 — JLU184 服务器 (LSF)
+# 对应 param/sub_orca.sh 的调度参数:
+#   #BSUB -n 56  -> number_node * cpu_per_node = 56
+#   #BSUB -q normal
+#   #BSUB -R 'span[ptile=56]'
+#   #BSUB -J orca
+# 调度器头由 dpdispatcher 依据本配置自动生成 (无需手写 #BSUB)。
+number_node: 1
+cpu_per_node: 56
+gpu_per_node: 0
+group_size: 1
+queue_name: "normal"
+# span[ptile] 及作业名通过 custom_flags 直接插入 LSF 脚本头
+custom_flags:
+  - "#BSUB -R 'span[ptile=56]'"
+  - "#BSUB -J orca"
+# ORCA 环境也可在此 source (与 orca_sub.sh 中的 ORCA_ENV 二选一即可, 勿重复):
+# source_list: ["/data/home/miwenhui/soft/orca.sh"]

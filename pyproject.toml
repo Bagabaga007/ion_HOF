@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bppa-hof"
+version = "0.1.0"
+description = "全氮/富氮离子盐生成焓计算工作流 (gas-phase atomization + VBT lattice enthalpy)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "LicenseRef-Proprietary"
+authors = [{ name = "BPPA" }]
+dependencies = []
+
+[project.optional-dependencies]
+toml = ["tomli; python_version < '3.11'"]
+dispatch = ["dpdispatcher>=0.6.7"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "coverage>=7.0",
+    "dpdispatcher>=0.6.7",
+    "PyYAML>=6.0",
+]
+
+[project.scripts]
+bppa-hof = "bppa_hof.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+bppa_hof = ["scripts/*.sh"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"
+markers = [
+    "unit: isolated pure-function and model tests",
+    "integration: multi-component tests without live remote services",
+    "config: configuration, packaging, and example contract tests",
+    "system: end-to-end CLI or dispatcher workflow tests",
+    "remote: opt-in tests that submit bounded jobs to JLU184",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["bppa_hof"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 100

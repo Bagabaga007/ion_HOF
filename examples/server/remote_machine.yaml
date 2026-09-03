@@ -1,0 +1,16 @@
+# dpdispatcher machine 配置 — 远程 HPC (SSH + 调度器)
+# batch_type 可选: Slurm / LSF / PBS / SGE / Torque / Shell / Bohrium ...
+# 请将占位符替换为真实值; 推荐用 SSH 密钥而非明文密码。
+batch_type: "Slurm"
+context_type: "SSHContext"
+local_root: "./"
+remote_root: "/home/<USERNAME>/bppa_hof_work"   # 必须为绝对路径
+remote_profile:
+  hostname: "<HOSTNAME_OR_IP>"
+  username: "<USERNAME>"
+  port: 22
+  # 二选一: 密钥 (推荐) 或密码
+  key_filename: "<~/.ssh/id_rsa>"
+  look_for_keys: true
+  # password: "<PASSWORD>"
+  timeout: 10

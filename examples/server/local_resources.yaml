@@ -1,0 +1,10 @@
+# dpdispatcher resources 配置 — 本地
+number_node: 1
+cpu_per_node: 8
+gpu_per_node: 0
+group_size: 1
+queue_name: "local"
+# 计算前需要 source 的环境脚本 / 环境变量 / module (按需填写)
+# source_list: ["/path/to/orca_env.sh"]
+# envs:
+#   PATH: "/opt/orca:$PATH"

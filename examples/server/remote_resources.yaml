@@ -1,0 +1,15 @@
+# dpdispatcher resources 配置 — 远程集群 CPU 节点
+number_node: 1
+cpu_per_node: 32
+gpu_per_node: 0
+group_size: 1
+queue_name: "<QUEUE_NAME>"
+# 计算前 source 的环境脚本 (加载 ORCA/Gaussian 环境)
+source_list: ["<ENV_SETUP_FILE>"]
+# 追加环境变量
+envs:
+  PATH: "<QM_SOFTWARE_BIN>:$PATH"
+# module load
+module_list: ["<MODULE_NAME>"]
+# 直接插入调度脚本头 (Slurm #SBATCH / LSF #BSUB)
+custom_flags: ["#SBATCH -J bppa_hof"]

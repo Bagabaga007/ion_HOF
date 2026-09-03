@@ -1,0 +1,14 @@
+# dpdispatcher machine 配置 — JLU184 服务器 (LSF 调度器 + SSH)
+# 对应 param/sub_orca.sh 的运行环境。请替换 <...> 占位符。
+batch_type: "LSF"
+context_type: "SSHContext"
+local_root: "./"
+remote_root: "/data/home/<USERNAME>/bppa_hof_work"   # 必须为绝对路径
+remote_profile:
+  hostname: "<JLU184_HOST_OR_IP>"
+  username: "<USERNAME>"
+  port: 22
+  key_filename: "<~/.ssh/id_rsa>"        # 推荐密钥登录
+  look_for_keys: true
+  # password: "<PASSWORD>"               # 或用密码 (不推荐)
+  timeout: 10

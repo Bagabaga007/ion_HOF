@@ -1,0 +1,34 @@
+# 验证例: 五唑肼盐 (1a + 1c), 化学式 N7H5, G4 方法。
+# 数据来自《生成焓相关》文档 指标2 步骤2-5。
+# 期望结果: 气相 ≈ 241.8, 晶格焓 ≈ 139.2, 固态 ≈ 102.58 kcal/mol (实验 103.70)。
+
+[method]
+name = "G4"
+
+# G4 计算水平下单原子总焓 (Hartree): 二重态 H, 四重态 N。
+[method.atom_enthalpies_hartree]
+H = -0.49906
+N = -54.571306
+
+# 待计算的盐
+[[salt]]
+label = "1a+1c"
+reference = 103.70   # 实验标准值 kcal/mol (五唑肼)
+
+  # 1a: 五唑阴离子 N5- (test1.log / test1v.log)
+  [[salt.ion]]
+  formula = "N5"
+  charge = -1
+  enthalpy_hartree = -273.664407
+  volume_cm3_mol = 44.640
+  shape = "nonlinear"
+  count = 1
+
+  # 1c: 肼阳离子 N2H5+ (test2.log / test2v.log)
+  [[salt.ion]]
+  formula = "N2H5"
+  charge = 1
+  enthalpy_hartree = -112.120023
+  volume_cm3_mol = 28.479
+  shape = "nonlinear"
+  count = 1
