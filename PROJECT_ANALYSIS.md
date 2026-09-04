@@ -8,8 +8,8 @@ the HEMERA aggregate view is [HEMERA/BPPA/ion_HOF_ANALYSIS.md](/workplace/home/y
 - Package: `bppa-hof 0.1.0`, Python >=3.9, src-layout under `src/bppa_hof`.
 - Scope: gas-phase atomization enthalpy, VBT lattice enthalpy, Ion/Salt models, Gaussian/ORCA input/output,
   dpdispatcher submission, CLI batch/report/parse/gen-input/submit and staged ORCA thermochemistry.
-- GitHub: <https://github.com/Bagabaga007/ion_HOF>, `main`, commit
-  `01ad534253e5b999a357bccd5dedcca7a9054789`.
+- GitHub: <https://github.com/Bagabaga007/ion_HOF>, branch `main`; the current verified SHA is
+  maintained in the HEMERA `system.json` manifest to avoid stale self-references in this report.
 - External programs: Gaussian 16, ORCA, dpdispatcher and remote scheduler/SSH resources.
 
 ## Verification snapshot
