@@ -170,7 +170,7 @@ def machine_resources_prep(machine_path: str, resources_path: str):
         from dpdispatcher import Machine, Resources
     except ImportError as exc:  # pragma: no cover
         raise ImportError(
-            "作业提交需要 dpdispatcher, 请安装: pip install 'bppa-hof[dispatch]'"
+            "作业提交需要 dpdispatcher, 请安装: pip install 'ion_HOF[dispatch]'"
         ) from exc
 
     def _load(path, cls):

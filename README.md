@@ -1,4 +1,4 @@
-# bppa-hof
+# ion_HOF
 
 全氮 / 富氮离子盐（五唑离子盐等）**生成焓计算工作流**。将《生成焓相关》方法文档中
 已实现并验证的计算方法固化为稳定、可复用的 Python 包。
@@ -79,9 +79,9 @@ ion = Ion.from_qm("N5", -1, qm, shape="nonlinear")
 ## 命令行
 
 ```bash
-bppa-hof batch  examples/h5n7/config.toml   # 批量计算气相/晶格/固态生成焓
-bppa-hof report examples/h5n7/config.toml   # 对含 reference 的盐输出 MAE/RMSD 偏差表
-bppa-hof parse  test1.log                    # 解析单个 QM 输出文件
+ion_HOF batch  examples/h5n7/config.toml   # 批量计算气相/晶格/固态生成焓
+ion_HOF report examples/h5n7/config.toml   # 对含 reference 的盐输出 MAE/RMSD 偏差表
+ion_HOF parse  test1.log                    # 解析单个 QM 输出文件
 ```
 
 配置格式见 `examples/h5n7/config.toml`（离子能量/体积可直接给数值，或用
@@ -97,7 +97,7 @@ bppa-hof parse  test1.log                    # 解析单个 QM 输出文件
 ```bash
 # 为一个离子 (N5-) 生成 ORCA 优化+频率和 Gaussian 体积输入，
 # 并额外生成单原子 N 的输入（多重度按 C=3/H=2/N=4/O=3/F=2/Li=2 自动设置）
-bppa-hof gen-input n5.xyz --charge -1 --mult 1 --program orca \
+ion_HOF gen-input n5.xyz --charge -1 --mult 1 --program orca \
     --outdir ./inputs --atoms N H
 ```
 
@@ -107,7 +107,7 @@ bppa-hof gen-input n5.xyz --charge -1 --mult 1 --program orca \
 `H(high//low) = E(high,SP) + Hcorr(low,freq)` 合成焓：
 
 ```bash
-bppa-hof orca-thermo n5.xyz --charge -1 --mult 1 --label n5 \
+ion_HOF orca-thermo n5.xyz --charge -1 --mult 1 --label n5 \
     --machine examples/server/jlu184_machine.yaml \
     --resources examples/server/jlu184_resources.yaml \
     --work-base ./work/n5-orca
@@ -127,13 +127,13 @@ bppa-hof orca-thermo n5.xyz --charge -1 --mult 1 --label n5 \
 pip install -e ".[dispatch]"
 
 # 本地无调度器测试
-bppa-hof submit ./inputs/*.inp --program orca \
+ion_HOF submit ./inputs/*.inp --program orca \
     --machine examples/server/local_machine.yaml \
     --resources examples/server/local_resources.yaml \
     --work-base ./work --nodes 1
 
 # JLU184 服务器 (LSF 调度器 + SSH)：#BSUB 头由 resources 配置自动生成
-bppa-hof submit ./inputs/*.inp --program orca \
+ion_HOF submit ./inputs/*.inp --program orca \
     --machine examples/server/jlu184_machine.yaml \
     --resources examples/server/jlu184_resources.yaml \
     --work-base ./work --nodes 1
@@ -159,7 +159,7 @@ export ORCA_ENV=/data/home/miwenhui/soft/orca.sh                 # 运行前 sou
 ### 3. 解析 + 计算
 
 ```bash
-bppa-hof parse ./work/outputs/n5_sp.out    # 查看提取到的能量/体积
+ion_HOF parse ./work/outputs/n5_sp.out    # 查看提取到的能量/体积
 # 然后按 config.toml 填入 energy_file/volume_file，运行 batch/report
 ```
 

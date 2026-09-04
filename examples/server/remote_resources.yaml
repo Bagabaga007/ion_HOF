@@ -12,4 +12,4 @@ envs:
 # module load
 module_list: ["<MODULE_NAME>"]
 # 直接插入调度脚本头 (Slurm #SBATCH / LSF #BSUB)
-custom_flags: ["#SBATCH -J bppa_hof"]
+custom_flags: ["#SBATCH -J ion_HOF"]

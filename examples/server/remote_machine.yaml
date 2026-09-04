@@ -4,7 +4,7 @@
 batch_type: "Slurm"
 context_type: "SSHContext"
 local_root: "./"
-remote_root: "/home/<USERNAME>/bppa_hof_work"   # 必须为绝对路径
+remote_root: "/home/<USERNAME>/ion_HOF_work"   # 必须为绝对路径
 remote_profile:
   hostname: "<HOSTNAME_OR_IP>"
   username: "<USERNAME>"

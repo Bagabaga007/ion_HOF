@@ -4,7 +4,7 @@ import os
 
 import pytest
 
-from bppa_hof.cli import main
+from bppa_hof.cli import build_parser, main
 from bppa_hof.config import load_config
 
 pytestmark = pytest.mark.config
@@ -19,6 +19,11 @@ def test_load_example_config():
     assert cfg.method == "G4"
     assert len(cfg.salts) == 1
     assert cfg.references["1a+1c"] == pytest.approx(103.70)
+
+
+def test_public_project_name_is_ion_hof():
+    """用户可见的发行版和 CLI 名称必须与 HEMERA 组件名一致。"""
+    assert build_parser().prog == "ion_HOF"
 
 
 def test_example_config_reproduces_solid_hof():

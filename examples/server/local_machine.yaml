@@ -1,8 +1,8 @@
 # dpdispatcher machine 配置 — 本地运行 (无调度器, 直接在本机跑)
-# 适合单机测试或独立计算服务器。用于 bppa-hof submit --machine 本文件。
+# 适合单机测试或独立计算服务器。用于 ion_HOF submit --machine 本文件。
 batch_type: "Shell"
 context_type: "LocalContext"
 local_root: "./"
-remote_root: "/tmp/bppa_hof_work"
+remote_root: "/tmp/ion_HOF_work"
 remote_profile:
   symlink: false

@@ -1,4 +1,4 @@
-"""命令行接口: bppa-hof。
+"""命令行接口: ion_HOF。
 
 子命令:
   batch  <config.toml>   批量计算配置中所有盐, 输出气相/晶格/固态生成焓
@@ -170,7 +170,7 @@ def _cmd_orca_thermo(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="bppa-hof",
+        prog="ion_HOF",
         description="全氮/富氮离子盐生成焓计算工作流",
     )
     sub = parser.add_subparsers(dest="command", required=True)
