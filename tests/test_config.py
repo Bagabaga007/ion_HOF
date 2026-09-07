@@ -1,6 +1,7 @@
 """配置加载与 CLI 集成测试, 使用 examples/h5n7/config.toml。"""
 
 import os
+from pathlib import Path
 
 import pytest
 
@@ -19,6 +20,15 @@ def test_load_example_config():
     assert cfg.method == "G4"
     assert len(cfg.salts) == 1
     assert cfg.references["1a+1c"] == pytest.approx(103.70)
+
+
+def test_operable_example_contract():
+    root = Path(__file__).resolve().parents[1]
+    assert (root / "docs/usage.md").is_file()
+    assert (root / "examples/h5n7/README.md").is_file()
+    assert (root / "examples/h5n7/run_demo.py").is_file()
+    assert (root / "examples/qm/n5_anion.xyz").read_text().splitlines()[0] == "5"
+    assert "ion_HOF batch examples/h5n7/config.toml" in (root / "docs/usage.md").read_text()
 
 
 def test_public_project_name_is_ion_hof():

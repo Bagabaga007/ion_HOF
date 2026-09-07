@@ -46,6 +46,9 @@ pip install -e ".[dev]"
 
 Python ≥ 3.9（3.11 以下需 `tomli`，见 `[toml]` 可选依赖）。
 
+完整的逐步操作说明见 [`docs/usage.md`](docs/usage.md)；可直接运行的离线案例见
+[`examples/h5n7/README.md`](examples/h5n7/README.md)。
+
 ## 库用法
 
 ```python
@@ -184,7 +187,7 @@ pytest -q --cov=bppa_hof --cov-branch --cov-report=term-missing --cov-fail-under
 ```
 
 每个测试必须且只能属于 `unit`、`integration`、`config`、`system` 四层之一；
-收集钩子会拒绝未分层测试。2026-09-03 的验证基线为 **77 passed**，生产代码
+收集钩子会拒绝未分层测试。当前验证基线为 **80 passed**，生产代码
 **970/970 条语句、274/274 个分支，均为 100%**。真实 JLU184 验证另行记录，
 不会让日常 pytest 隐式连接远程服务器。
 

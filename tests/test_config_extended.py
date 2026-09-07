@@ -180,3 +180,4 @@ def test_source_manifest_includes_test_gate_and_validation_docs():
     manifest = (root / "MANIFEST.in").read_text()
     assert "recursive-include tests *.py" in manifest
     assert "recursive-include docs *.md" in manifest
+    assert "recursive-include examples" in manifest

@@ -9,13 +9,16 @@ the HEMERA aggregate view is [HEMERA/BPPA/ion_HOF_ANALYSIS.md](/workplace/home/y
 - The `bppa_hof` import namespace is retained for Python API compatibility; the user-facing project and command name is `ion_HOF`.
 - Scope: gas-phase atomization enthalpy, VBT lattice enthalpy, Ion/Salt models, Gaussian/ORCA input/output,
   dpdispatcher submission, CLI batch/report/parse/gen-input/submit and staged ORCA thermochemistry.
+- Operable examples: `examples/h5n7/run_demo.py` for the offline H5N7 recalculation and
+  `examples/qm/` for generating real Gaussian/ORCA input files; the complete procedure is in
+  `docs/usage.md`.
 - GitHub: <https://github.com/Bagabaga007/ion_HOF>, branch `main`; the current verified SHA is
   maintained in the HEMERA `system.json` manifest to avoid stale self-references in this report.
 - External programs: Gaussian 16, ORCA, dpdispatcher and remote scheduler/SSH resources.
 
 ## Verification snapshot
 
-- 78 pytest tests across unit/integration/config/system.
+- 80 pytest tests across unit/integration/config/system.
 - 970/970 Python statements and 274/274 branches covered.
 - Ruff, Python compileall, shell syntax, sdist/wheel build and isolated wheel runtime pass.
 - Real JLU184: Gaussian 16 job 267589; ORCA 6.1 jobs 267593/267594; evidence is in

@@ -1,6 +1,9 @@
 """所有 CLI 子命令的系统级接口测试。"""
 
 from pathlib import Path
+import os
+import subprocess
+import sys
 from types import SimpleNamespace
 
 import pytest
@@ -199,3 +202,21 @@ def test_orca_thermo_cli(tmp_path, monkeypatch, capsys):
     assert seen["nodes"] == 3 and seen["script_path"] == "orca.sh"
     assert seen["max_retries"] == 0
     assert "-1.234000000000" in capsys.readouterr().out
+
+
+def test_packaged_h5n7_example_script_runs(tmp_path):
+    root = Path(__file__).resolve().parents[1]
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(root / "src")
+    completed = subprocess.run(
+        [sys.executable, str(root / "examples/h5n7/run_demo.py")],
+        cwd=root,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stderr
+    payload = __import__("json").loads(completed.stdout)
+    assert payload["salts"][0]["label"] == "1a+1c"
+    assert payload["salts"][0]["solid_hof_kcal_mol"] == pytest.approx(102.596942, abs=1e-6)
