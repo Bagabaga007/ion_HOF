@@ -3,6 +3,22 @@
 全氮 / 富氮离子盐（五唑离子盐等）**生成焓计算工作流**。将《生成焓相关》方法文档中
 已实现并验证的计算方法固化为稳定、可复用的 Python 包。
 
+> 面向含能材料研究者的 Gaussian/ORCA 生成焓执行管线：从 QM 输入生成、远程作业分发、
+> 严格输出解析，到气相/晶格/固态生成焓和误差报告。
+
+**主题关键词**：`energetic-materials` · `enthalpy-of-formation` · `ionic-salts` ·
+`quantum-chemistry` · `Gaussian` · `ORCA` · `thermochemistry` · `dpdispatcher` · `HEMERA`
+
+| 你要做什么 | 推荐入口 | 主要产物 |
+|---|---|---|
+| 先验证安装和公式 | [H5N7 离线案例](examples/h5n7/README.md) | 气相、晶格、固态生成焓 JSON/表格 |
+| 生成 Gaussian/ORCA 输入 | [QM 输入示例](examples/qm/README.md) | `.gjf` / `.inp` 输入文件 |
+| 在 JLU184 上执行 ORCA | [完整使用指南](docs/usage.md) | 优化/频率、高水平单点、热校正结果 |
+| 批量比较实验参考值 | `ion_HOF report` | MAE/RMSD 报告 |
+
+本项目是可审计的研究执行管线和窄域模型，不是通用生成焓预测器；内置 VBT 参数仅覆盖
+文档标定的 `I=1`、1:1 盐，多价或非 1:1 盐默认拒绝。
+
 核心关系：
 
 ```
@@ -48,6 +64,7 @@ Python ≥ 3.9（3.11 以下需 `tomli`，见 `[toml]` 可选依赖）。
 
 完整的逐步操作说明见 [`docs/usage.md`](docs/usage.md)；可直接运行的离线案例见
 [`examples/h5n7/README.md`](examples/h5n7/README.md)。
+项目定位、主题关键词和输入/输出契约见 [`docs/project-profile.md`](docs/project-profile.md)。
 
 ## 库用法
 

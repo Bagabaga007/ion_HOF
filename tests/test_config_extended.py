@@ -181,3 +181,10 @@ def test_source_manifest_includes_test_gate_and_validation_docs():
     assert "recursive-include tests *.py" in manifest
     assert "recursive-include docs *.md" in manifest
     assert "recursive-include examples" in manifest
+
+
+def test_project_profile_metadata_contract():
+    root = Path(__file__).resolve().parents[1]
+    profile = (root / "docs/project-profile.md").read_text()
+    assert "enthalpy-of-formation" in profile
+    assert "Gaussian" in profile and "ORCA" in profile

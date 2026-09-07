@@ -6,11 +6,17 @@ build-backend = "setuptools.build_meta"
 name = "ion_HOF"
 version = "0.1.0"
 description = "全氮/富氮离子盐生成焓计算工作流 (gas-phase atomization + VBT lattice enthalpy)"
+keywords = ["energetic-materials", "enthalpy-of-formation", "ionic-salts", "quantum-chemistry", "gaussian", "orca", "thermochemistry", "dpdispatcher", "HEMERA"]
 readme = "README.md"
 requires-python = ">=3.9"
 license = "LicenseRef-Proprietary"
 authors = [{ name = "BPPA" }]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Bagabaga007/ion_HOF"
+Repository = "https://github.com/Bagabaga007/ion_HOF"
+Documentation = "https://github.com/Bagabaga007/ion_HOF/blob/main/docs/usage.md"
 
 [project.optional-dependencies]
 toml = ["tomli; python_version < '3.11'"]
