@@ -18,7 +18,7 @@ the HEMERA aggregate view is [HEMERA/BPPA/ion_HOF_ANALYSIS.md](/workplace/home/y
 
 ## Verification snapshot
 
-- 80 pytest tests across unit/integration/config/system.
+- 81 pytest tests across unit/integration/config/system.
 - 970/970 Python statements and 274/274 branches covered.
 - Ruff, Python compileall, shell syntax, sdist/wheel build and isolated wheel runtime pass.
 - Real JLU184: Gaussian 16 job 267589; ORCA 6.1 jobs 267593/267594; evidence is in

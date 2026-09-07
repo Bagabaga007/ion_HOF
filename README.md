@@ -204,7 +204,7 @@ pytest -q --cov=bppa_hof --cov-branch --cov-report=term-missing --cov-fail-under
 ```
 
 每个测试必须且只能属于 `unit`、`integration`、`config`、`system` 四层之一；
-收集钩子会拒绝未分层测试。当前验证基线为 **80 passed**，生产代码
+收集钩子会拒绝未分层测试。当前验证基线为 **81 passed**，生产代码
 **970/970 条语句、274/274 个分支，均为 100%**。真实 JLU184 验证另行记录，
 不会让日常 pytest 隐式连接远程服务器。
 
