@@ -1,0 +1,16 @@
+{
+  "name": "ion_HOF",
+  "description": "Auditable Gaussian/ORCA workflow for gas-phase, lattice, and solid enthalpy of energetic ionic salts.",
+  "homepage": "https://github.com/Bagabaga007/ion_HOF/blob/main/docs/usage.md",
+  "topics": [
+    "energetic-materials",
+    "enthalpy-of-formation",
+    "ionic-salts",
+    "quantum-chemistry",
+    "gaussian",
+    "orca",
+    "thermochemistry",
+    "dpdispatcher",
+    "hemera"
+  ]
+}

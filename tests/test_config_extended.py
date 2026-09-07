@@ -1,5 +1,6 @@
 """TOML、文件解析和方法配置契约测试。"""
 
+import json
 from pathlib import Path
 
 import pytest
@@ -188,3 +189,6 @@ def test_project_profile_metadata_contract():
     profile = (root / "docs/project-profile.md").read_text()
     assert "enthalpy-of-formation" in profile
     assert "Gaussian" in profile and "ORCA" in profile
+    metadata = json.loads((root / "docs/github-metadata.json").read_text())
+    assert metadata["name"] == "ion_HOF"
+    assert "gaussian" in metadata["topics"] and "hemera" in metadata["topics"]
