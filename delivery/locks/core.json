@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project": "ion_HOF",
+  "profile": "core",
+  "version": "0.1.0",
+  "python_requires": ">=3.9",
+  "runtime_dependencies": [],
+  "conditional_dependencies": {
+    "python<3.11": {"tomli": "environment-provided; package constraint has no upper pin"}
+  },
+  "validated_environment": {"python": "3.12.10"},
+  "source_tree_sha256": "055576268e1bc9117e4187ae3a8cec3c87e7458a8e3cb78336db7756a4b24159",
+  "numerical_baseline": {
+    "input": "examples/h5n7/config.toml",
+    "input_sha256": "d6750a8564582105bc89118945bbf241bd43914c892e776e3ea98a56d7dcd47b",
+    "method": "G4",
+    "units": "kcal/mol",
+    "absolute_tolerance": 1e-10,
+    "gas_phase_hof": 241.824630120047,
+    "lattice_enthalpy": 139.22768776216415,
+    "solid_hof": 102.59694235788285
+  },
+  "provenance": "Derived from pyproject.toml, bppa_hof.__version__, the locked source tree, and an executable offline H5N7 recomputation."
+}

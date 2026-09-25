@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "project": "ion_HOF",
+  "profile": "dispatch",
+  "version": "0.1.0",
+  "python_requires": ">=3.9",
+  "validated_environment": {
+    "python": "3.12.10",
+    "dpdispatcher": "0.6.10",
+    "PyYAML": "6.0.3",
+    "paramiko": "4.0.0",
+    "requests": "2.32.3",
+    "cryptography": "45.0.6"
+  },
+  "package_constraints": {
+    "dpdispatcher": ">=0.6.7",
+    "PyYAML": ">=6.0"
+  },
+  "source_tree_sha256": "a8bc11381d03c7857d869e65003a0ca04625717abb8114d081eef9f39e82e27b",
+  "programs": {
+    "gaussian": {
+      "input_suffix": ".gjf",
+      "output_suffix": ".log",
+      "command": "g16",
+      "environment_override": "G16_EXE",
+      "runner_sha256": "878a05ccf42fc8d8cb873583c0936fae3706a601b793d7f835d25860f0dd1a7e"
+    },
+    "orca": {
+      "input_suffix": ".inp",
+      "output_suffix": ".out",
+      "command": "orca",
+      "environment_override": "ORCA_EXE",
+      "runner_sha256": "1b3264ebdd6e6de6b60c1222d4064f95c34151982cee2d4c0c1b6398cccf040c"
+    }
+  },
+  "provenance": "Exact validated package versions are observational deployment evidence; package_constraints remain the supported install contract from pyproject.toml."
+}
