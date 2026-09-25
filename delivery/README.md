@@ -32,5 +32,6 @@ Executable visibility is opt-in because Gaussian/ORCA normally live on the remot
 worker selected by dpdispatcher, not necessarily on the orchestration host. Every
 failed required check produces exit status 1. The preflight never submits work.
 
-The manifest currently says `candidate_uncommitted`: these locks are working-tree
-evidence and must be regenerated after an authorized release commit.
+The frozen manifest records the tested source commit. It is committed separately
+from that source snapshot so the manifest does not need to contain its own Git hash.
+The release tag points to the manifest commit.

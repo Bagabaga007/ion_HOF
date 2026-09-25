@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "project": "ion_HOF",
+  "version": "0.1.0",
+  "release_status": "frozen",
+  "source_revision": {
+    "vcs": "git",
+    "commit": "8ec82aac3fc8a2fac7a4ed7cdf2080e6e89195b1",
+    "state": "committed_source",
+    "dirty": false,
+    "note": "The source commit was tested before the sidecar manifest commit; the release tag points to the latter.",
+    "trees": {
+      "core": {
+        "paths": ["src/bppa_hof/__init__.py", "src/bppa_hof/atom_data.py", "src/bppa_hof/cli.py", "src/bppa_hof/config.py", "src/bppa_hof/constants.py", "src/bppa_hof/deviation.py", "src/bppa_hof/gas_phase.py", "src/bppa_hof/geometry.py", "src/bppa_hof/inputgen.py", "src/bppa_hof/lattice.py", "src/bppa_hof/models.py", "src/bppa_hof/salt.py", "src/bppa_hof/parsers/*.py"],
+        "sha256": "055576268e1bc9117e4187ae3a8cec3c87e7458a8e3cb78336db7756a4b24159",
+        "file_count": 16
+      },
+      "dispatch": {
+        "paths": ["src/bppa_hof/cli.py", "src/bppa_hof/dispatch.py", "src/bppa_hof/geometry.py", "src/bppa_hof/inputgen.py", "src/bppa_hof/workflow.py", "src/bppa_hof/scripts/*.sh"],
+        "sha256": "a8bc11381d03c7857d869e65003a0ca04625717abb8114d081eef9f39e82e27b",
+        "file_count": 7
+      }
+    }
+  },
+  "profiles": {
+    "core": {
+      "lock": "delivery/locks/core.json",
+      "description": "Pure CPU thermochemistry and numerical recomputation without dpdispatcher or QM executables.",
+      "numerical_baseline": {
+        "config": "examples/h5n7/config.toml",
+        "expected": {"gas_phase_hof": 241.824630120047, "lattice_enthalpy": 139.22768776216415, "solid_hof": 102.59694235788285},
+        "absolute_tolerance": 1e-10,
+        "units": "kcal/mol"
+      }
+    },
+    "dispatch": {
+      "lock": "delivery/locks/dispatch.json",
+      "description": "dpdispatcher configuration, QM input templates, packaged runners, and optional compute-host executable visibility.",
+      "backends": {
+        "gaussian": {"command": "g16", "environment": "G16_EXE", "fallback": null},
+        "orca": {"command": "orca", "environment": "ORCA_EXE", "fallback": "/data/home/miwenhui/soft/orca_6_1_0_avx2/orca"}
+      }
+    }
+  },
+  "artifacts": [
+    {"path": "pyproject.toml", "sha256": "fe68c891ee373715c8698909e02eaafd2737f5813305e033ec4ba52c526c022a", "size_bytes": 1668, "role": "project_metadata", "required": true, "profiles": ["core", "dispatch"]},
+    {"path": "scripts/release_preflight.py", "sha256": "aee74c9f6448568930a37e2308b37b16e84e5b23dbac8e285020dabb2016370f", "size_bytes": 11243, "role": "release_preflight", "required": true, "profiles": ["core", "dispatch"]},
+    {"path": "delivery/locks/core.json", "sha256": "80f6d6019965361a27b94d7f7bde5b2025f23eccee704cec3b8c026bb8b8f113", "size_bytes": 920, "role": "core_lock", "required": true, "profiles": ["core"]},
+    {"path": "delivery/locks/dispatch.json", "sha256": "db5f3a50f26462d5e61a29ac8f041811e42e4bc162f58c2ac1eead4400ecdc91", "size_bytes": 1166, "role": "dispatch_lock", "required": true, "profiles": ["dispatch"]},
+    {"path": "examples/h5n7/config.toml", "sha256": "d6750a8564582105bc89118945bbf241bd43914c892e776e3ea98a56d7dcd47b", "size_bytes": 995, "role": "core_numerical_baseline", "required": true, "profiles": ["core"]},
+    {"path": "examples/qm/n5_anion.xyz", "sha256": "72ebe028975381e75c2d0b0f14b459b98dc40bc976397cc36c65c6f460c96b9a", "size_bytes": 247, "role": "qm_input_template", "required": true, "profiles": ["dispatch"]},
+    {"path": "examples/qm/n2h5_cation.xyz", "sha256": "26d6020095e6e6019862cc7d28d2f8dd6365baf22e2a1476493a38a25a9d5b9a", "size_bytes": 318, "role": "qm_input_template", "required": true, "profiles": ["dispatch"]},
+    {"path": "examples/server/local_machine.yaml", "sha256": "cdf2d2835178ed4d68db60f7e8bc09375eb741472ed73795c3b882176999914e", "size_bytes": 306, "role": "dpdispatcher_machine_template", "required": true, "profiles": ["dispatch"]},
+    {"path": "examples/server/local_resources.yaml", "sha256": "51c4b83f1f13dc5445758ca5f138448ffe32d5d6d7e0edbffc6a2e756d797839", "size_bytes": 280, "role": "dpdispatcher_resources_template", "required": true, "profiles": ["dispatch"]},
+    {"path": "src/bppa_hof/scripts/g16_sub.sh", "sha256": "878a05ccf42fc8d8cb873583c0936fae3706a601b793d7f835d25860f0dd1a7e", "size_bytes": 1117, "role": "gaussian_runner", "required": true, "profiles": ["dispatch"]},
+    {"path": "src/bppa_hof/scripts/orca_sub.sh", "sha256": "1b3264ebdd6e6de6b60c1222d4064f95c34151982cee2d4c0c1b6398cccf040c", "size_bytes": 1528, "role": "orca_runner", "required": true, "profiles": ["dispatch"]}
+  ],
+  "generated_by": "Codex BPPA release-lock workflow; SHA-256 tree format is '<file_sha256><two spaces><relative_path>\\n' sorted by relative path"
+}
